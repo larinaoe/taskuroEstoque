@@ -62,7 +62,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         foreach ($data as $product) {
-            if ((int)$product['id'] !== 0) {
+            if (isset($product['id']) && (int)$product['id'] !== 0) {
                 $productModel = Product::find($product['id']);
                 $productModel->name = $product['name'];
                 $productModel->price = $product['price'];

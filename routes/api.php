@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/bulk-products', ProductController::class . '@bulkUpdate');
 
 Route::get('/logs', LogController::class . '@index');
+
 Route::apiResource('/products', ProductController::class);
 
 
