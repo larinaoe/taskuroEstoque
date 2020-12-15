@@ -29,11 +29,7 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         $data = $request->all();
-        return Product::create([
-            'name' => $data['name'],
-            'price' => $data['price'],
-            'quantity' => $data['quantity']
-        ]);
+        return Product::create($data);
     }
     /**
      * Update the specified resource in storage.

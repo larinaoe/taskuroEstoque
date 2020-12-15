@@ -1,5 +1,0 @@
-<?php
-namespace App\Http\Services;
-
-class UpdateProductwHistoryService
-

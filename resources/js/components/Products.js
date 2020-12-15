@@ -5,7 +5,7 @@ import { set } from "lodash";
 import Dropdown from "react-bootstrap/Dropdown";
 import BootstrapTable from "react-bootstrap-table-next";
 
-function User() {
+function Products() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         getItem();
@@ -23,34 +23,40 @@ function User() {
     }
     function bulkUpdate() {
         const editedProducts = products.map(product => {
-            return {...product, price: parseFloat(product.price), quantity: parseInt(product.quantity)};
-          });
+            return {
+                ...product,
+                price: parseFloat(product.price),
+                quantity: parseInt(product.quantity)
+            };
+        });
         axios.post(
             "/api/bulk-products",
             editedProducts.filter(product => product.isEditing)
         );
     }
 
-    function saveLogic(product, productIndex){
-        if(product.id !== 0){
+    function saveLogic(product, productIndex) {
+        if (product.id !== 0) {
             updateItem(product);
             return;
         }
 
         saveItem(product, productIndex);
-    }   
-
-    function saveItem(product, productIndex) {
-        axios.post("/api/products", {
-            ...product,
-            price: parseFloat(product.price),
-            quantity: parseInt(product.quantity)
-        }).then(({data}) => {
-            products[productIndex].id = data.id;
-        });
     }
 
-    function updateItem(product){
+    function saveItem(product, productIndex) {
+        axios
+            .post("/api/products", {
+                ...product,
+                price: parseFloat(product.price),
+                quantity: parseInt(product.quantity)
+            })
+            .then(({ data }) => {
+                products[productIndex].id = data.id;
+            });
+    }
+
+    function updateItem(product) {
         axios.put(`/api/products/${product.id}`, {
             ...product,
             price: parseFloat(product.price),
@@ -68,10 +74,10 @@ function User() {
     function getItem(product) {
         axios.get("/api/products").then(({ data }) => {
             const sortedProducts = data.map(product => {
-                return {...product, isEditing: false}
+                return { ...product, isEditing: false };
             });
 
-            setProducts(sortedProducts.sort((a, b) => a.id > b.id ? 1 : -1));
+            setProducts(sortedProducts.sort((a, b) => (a.id > b.id ? 1 : -1)));
         });
     }
 
@@ -115,7 +121,7 @@ function User() {
                     <td>
                         <Dropdown>
                             <Dropdown.Toggle variant="info" id="dropdown-basic">
-                            <i className="fas fa-ellipsis-h"></i>
+                                On
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item
@@ -142,12 +148,6 @@ function User() {
 
     return (
         <div className="container mt-3">
-            <input
-                className="form-control"
-                id="myInput"
-                type="text"
-                placeholder="Search for products..."
-            ></input>
             <p></p>
             <div className="card text-left">
                 <button
@@ -185,10 +185,5 @@ function User() {
     );
 }
 
-export default User;
+export default Products;
 
-axios.get("");
-// DOM element
-if (document.getElementById("user")) {
-    ReactDOM.render(<User />, document.getElementById("user"));
-}

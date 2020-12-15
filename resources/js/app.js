@@ -4,8 +4,6 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-import '@fortawesome/fontawesome-free/css/all.css'
-
 
 require('./bootstrap');
 
@@ -17,4 +15,4 @@ require('./bootstrap');
 
 require('./components/Example');
 
-require('./components/User');
+require('./components/Manager.js');

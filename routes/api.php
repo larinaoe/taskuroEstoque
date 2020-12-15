@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Requests\BulkUpdateRequest;
 use Illuminate\Http\Request;
@@ -21,5 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/bulk-products', ProductController::class . '@bulkUpdate');
 
+Route::get('/logs', LogController::class . '@index');
 Route::apiResource('/products', ProductController::class);
+
 
