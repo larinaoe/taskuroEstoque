@@ -5,7 +5,6 @@ import { set } from "lodash";
 import Dropdown from "react-bootstrap/Dropdown";
 import BootstrapTable from "react-bootstrap-table-next";
 
-
 function Log() {
     const [logs, setLogs] = useState([]);
     useEffect(() => {
@@ -35,22 +34,24 @@ function Log() {
                 </tr>
             );
         });
-    }
+    };
 
     return (
-        <div>
-             <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>{generateItens()}</tbody>
-            </table>
+        <div className="container mt-3">
+            <div>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>{generateItens()}</tbody>
+                </table>
+            </div>
         </div>
-    )
+    );
 }
 export default Log;

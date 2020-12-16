@@ -120,8 +120,23 @@ function Products() {
                     </td>
                     <td>
                         <Dropdown>
-                            <Dropdown.Toggle variant="info" id="dropdown-basic">
-                                On
+                            <Dropdown.Toggle
+                                variant="secondary"
+                                id="dropdown-dark"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="25"
+                                    height="25"
+                                    fill="currentColor"
+                                    className="bi bi-list"
+                                    viewBox="0 0 17 17"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                                    />
+                                </svg>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item
@@ -153,17 +168,33 @@ function Products() {
                 <button
                     type="submit"
                     value="Submit"
-                    className="btn btn-info btn-sm"
+                    className="btn btn-light btn-sm"
                     onClick={addProduct}
                 >
-                    New Product
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="currentColor"
+                        className="bi bi-plus-circle"
+                        viewBox="0 0 17 17"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                        />
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                        />
+                    </svg>
                 </button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Price $</th>
                             <th scope="col">Quantity</th>
                             <th scope="col"> </th>
                         </tr>
@@ -173,7 +204,7 @@ function Products() {
                 <button
                     type="button"
                     value="Submit"
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-secondary"
                     onClick={() => {
                         bulkUpdate();
                     }}
